@@ -1,76 +1,39 @@
-# Day 1 - Programming Fundamentals & Problem Solving
+# Pugarch Internship
 
 ## Overview
 
-Day 1 focuses on programming fundamentals, problem solving, data structures,
-algorithms, and Git/GitHub basics.
+This repository contains the work completed during the Pugarch Internship Technical Training and Domain Assessment Program.
 
-## Topics Covered
+The repository is organized day-wise and contains programming exercises, practical assignments, projects, documentation, and implementation work completed during the internship.
 
-- Variables and Constants
-- Data Types
-- Operators
-- Conditional Statements
-- Loops
-- Functions
-- Arrays
-- Strings
-- Objects
-- Scope
-- Error Handling
-- Basic Object-Oriented Programming
-- Data Structures
-- Searching and Sorting
-- Recursion
-- Time and Space Complexity
-- Git and GitHub
+## Internship Progress
 
-## Exercises
+| Day | Domain | Status |
+|---|---|---|
+| Day 1 | Programming Fundamentals & Problem Solving | Completed |
+| Day 2 | Python Development | Completed |
+| Day 3 | To be updated | Pending |
+| Day 4 | To be updated | Pending |
+| Day 5 | To be updated | Pending |
+| Day 6 | To be updated | Pending |
+| Day 7 | To be updated | Pending |
+| Day 8 | To be updated | Pending |
+| Day 9 | To be updated | Pending |
+| Day 10 | To be updated | Pending |
 
-The following programming problems were completed:
+## Repository Structure
 
-1. Reverse a String
-2. Check Palindrome
-3. Find Largest Number
-4. Find Second Largest Number
-5. Character Frequency
-6. Remove Duplicates
-7. Find Missing Number
-8. Find Duplicate Number
-9. First Non-Repeating Character
-10. Merge Sorted Arrays
-11. Find Common Elements
-12. Stack Implementation
-13. Queue Implementation
-14. Maximum Subarray Sum
-15. Sorting Without Built-in Sort
-
-## Employee Management CLI
-
-A command-line Employee Management System was developed using JavaScript.
-
-### Features
-
-- Add Employee
-- Update Employee
-- Delete Employee
-- Search Employee
-- List Employees
-- Find Highest Salary
-- Calculate Average Salary
-- Filter Employees by Department
-
-### Technology Used
-
-- JavaScript
-- Node.js
-- VS Code
-- Git
-- GitHub
-
-### How to Run
-
-Open the terminal inside the employee-management folder:
-
-```bash
-node app.js
+```text
+pugarch internship/
+├── README.md
+│
+├── day-01/
+│   ├── README.md
+│   ├── exercises/
+│   └── employee-management/
+│
+└── day-02/
+    ├── README.md
+    ├── python-exercises/
+    ├── management-system/
+    └── csv-analysis/
