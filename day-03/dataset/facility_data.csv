@@ -1,0 +1,16 @@
+facility_id,location,cleanliness_score,odor_score,waste_level,water_availability,footfall,complaints,inspection_date
+F001,Amravati,85,3,Low,Yes,420,4,2026-09-01
+F002,Nagpur,72,5,Medium,Yes,580,8,2026-09-02
+F003,Nagpur,91,2,Low,Yes,650,2,2026-09-03
+F004,Akola,64,7,High,No,310,12,2026-09-04
+F005,Wardha,78,4,Medium,Yes,390,6,2026-09-05
+F006,Amravati,88,3,Low,Yes,470,3,2026-09-06
+F007,Yavatmal,69,6,High,No,280,11,2026-09-07
+F008,Nagpur,94,2,Low,Yes,720,1,2026-09-08
+F009,Akola,61,8,High,No,250,15,2026-09-09
+F010,Wardha,82,3,Medium,Yes,440,5,2026-09-10
+F011,Amravati,76,5,Medium,Yes,360,7,2026-09-11
+F012,Nagpur,89,2,Low,Yes,680,2,2026-09-12
+F013,Yavatmal,73,6,Medium,No,330,9,2026-09-13
+F014,Akola,67,7,High,No,290,13,2026-09-14
+F015,Wardha,86,3,Low,Yes,510,3,2026-09-15
