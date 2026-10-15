@@ -2,3 +2,32 @@
 .next/
 dist/
 .env
+
+vendor/
+
+# PHP and Laravel dependencies
+/vendor/
+/day-08/laravel-app/vendor/
+/day-08/laravel-api/vendor/
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Laravel generated files
+/day-08/laravel-app/storage/logs/
+/day-08/laravel-api/storage/logs/
+
+# Node dependencies and build output
+node_modules/
+.next/
+dist/
+
+/ PHP and Laravel dependencies
+/vendor/
+/day-08/laravel-app/vendor/
+/day-08/laravel-api/vendor/
+
+# Laravel generated files
+/day-08/laravel-app/bootstrap/cache/
