@@ -1,0 +1,13 @@
+import express from "express";
+import cors from "cors";
+import employeeRoutes from "./routes/employeeRoutes.js";
+import { notFound, errorHandler } from "./middleware/notFound.js";
+const app = express();
+app.use(cors());
+app.use(express.json({ limit: "100kb" }));
+app.get("/health", (_req, res) => res.json({ status: "ok" }));
+app.use("/api/employees", employeeRoutes);
+app.use(notFound);
+app.use(errorHandler);
+const port = Number(process.env.PORT || 4000);
+app.listen(port, () => console.log(`Employee API listening at http://localhost:${port}`));
