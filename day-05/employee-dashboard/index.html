@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A JavaScript employee management dashboard with search, filtering, sorting and CRUD operations.">
+  <title>PeopleDesk | Employee Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">P</span><span>PeopleDesk<small>PEOPLE OPERATIONS</small></span></div>
+    <div class="nav-label">WORKSPACE</div>
+    <div class="nav-item active"><span>▦</span> Employee dashboard</div>
+    <div class="nav-item"><span>♙</span> People directory</div>
+    <div class="sidebar-bottom"><div class="avatar">YD</div><div><strong>Workspace Admin</strong><small>Local demo account</small></div></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar"><div><span class="eyebrow">WORKSPACE / PEOPLE</span><h1>Employee dashboard</h1></div><button class="primary" id="addEmployeeBtn">＋ Add employee</button></header>
+    <section class="welcome"><div><p class="eyebrow light">PEOPLE OVERVIEW</p><h2>Good work starts with great people.</h2><p>Manage your team, explore departments and keep employee records up to date.</p></div><div class="welcome-icon">✦</div></section>
+
+    <section class="stats">
+      <article class="stat-card"><span>Total employees</span><strong id="totalEmployees">0</strong><small>People in your directory</small></article>
+      <article class="stat-card"><span>Average salary</span><strong id="averageSalary">₹0</strong><small>Across all employees</small></article>
+      <article class="stat-card"><span>Departments</span><strong id="totalDepartments">0</strong><small>Distinct teams</small></article>
+      <article class="stat-card"><span>Active employees</span><strong id="activeEmployees">0</strong><small>Currently active</small></article>
+    </section>
+
+    <section class="directory panel">
+      <div class="section-heading"><div><h2>People directory</h2><p>Search, filter, sort and manage employee records.</p></div><span id="resultCount" class="result-count">0 employees</span></div>
+      <div class="toolbar">
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search name, role, email..."></label>
+        <select id="departmentFilter" aria-label="Filter by department"><option value="">All departments</option></select>
+        <select id="sortSelect" aria-label="Sort employees"><option value="name-asc">Name A–Z</option><option value="name-desc">Name Z–A</option><option value="salary-desc">Salary: high to low</option><option value="salary-asc">Salary: low to high</option><option value="department-asc">Department</option></select>
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>EMPLOYEE</th><th>DEPARTMENT</th><th>ROLE</th><th>SALARY</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody id="employeeTable"></tbody></table></div>
+      <div id="emptyState" class="empty-state" hidden><div>⌕</div><h3>No employees found</h3><p>Try changing your search or filters.</p><button class="secondary" id="clearFiltersBtn">Clear filters</button></div>
+    </section>
+    <footer>PeopleDesk · JavaScript CRUD demonstration · Records are stored in this browser.</footer>
+  </main>
+
+  <dialog id="employeeDialog">
+    <form id="employeeForm">
+      <div class="dialog-header"><div><p class="eyebrow">EMPLOYEE RECORD</p><h2 id="dialogTitle">Add employee</h2></div><button type="button" class="icon-button" id="closeDialogBtn" aria-label="Close">×</button></div>
+      <input type="hidden" id="employeeId">
+      <label>Full name<input id="nameInput" name="name" required maxlength="80" placeholder="e.g. Ananya Deshmukh"></label>
+      <div class="form-grid"><label>Email<input id="emailInput" name="email" type="email" required maxlength="120" placeholder="name@company.com"></label><label>Department<select id="departmentInput" name="department" required><option>Engineering</option><option>Design</option><option>Finance</option><option>Human Resources</option><option>Marketing</option><option>Operations</option><option>Sales</option></select></label></div>
+      <label>Job title<input id="roleInput" name="role" required maxlength="80" placeholder="e.g. Software Engineer"></label>
+      <div class="form-grid"><label>Annual salary (INR)<input id="salaryInput" name="salary" type="number" required min="0" max="100000000" step="1000" placeholder="600000"></label><label>Status<select id="statusInput" name="status"><option value="Active">Active</option><option value="Inactive">Inactive</option></select></label></div>
+      <label>Location<input id="locationInput" name="location" maxlength="80" placeholder="e.g. Pune"></label>
+      <div class="dialog-actions"><button type="button" class="secondary" id="cancelBtn">Cancel</button><button class="primary" type="submit">Save employee</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="detailsDialog"><div class="dialog-header"><div><p class="eyebrow">PEOPLE DIRECTORY</p><h2>Employee details</h2></div><button class="icon-button" id="closeDetailsBtn" aria-label="Close">×</button></div><div id="detailsContent" class="details-content"></div><div class="dialog-actions"><button class="secondary" id="detailsDoneBtn">Close</button></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

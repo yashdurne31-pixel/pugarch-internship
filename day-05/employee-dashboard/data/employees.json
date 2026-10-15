@@ -1,0 +1,10 @@
+[
+  {"id":1001,"name":"Aarav Sharma","email":"aarav@example.com","department":"Engineering","role":"Frontend Developer","salary":780000,"status":"Active","location":"Pune"},
+  {"id":1002,"name":"Priya Patel","email":"priya@example.com","department":"Design","role":"Product Designer","salary":720000,"status":"Active","location":"Mumbai"},
+  {"id":1003,"name":"Rohan Verma","email":"rohan@example.com","department":"Engineering","role":"Backend Developer","salary":900000,"status":"Active","location":"Nagpur"},
+  {"id":1004,"name":"Meera Joshi","email":"meera@example.com","department":"Human Resources","role":"HR Specialist","salary":610000,"status":"Inactive","location":"Pune"},
+  {"id":1005,"name":"Kabir Khan","email":"kabir@example.com","department":"Finance","role":"Financial Analyst","salary":680000,"status":"Active","location":"Hyderabad"},
+  {"id":1006,"name":"Ananya Deshmukh","email":"ananya@example.com","department":"Marketing","role":"Marketing Executive","salary":590000,"status":"Active","location":"Amravati"},
+  {"id":1007,"name":"Ishaan Gupta","email":"ishaan@example.com","department":"Operations","role":"Operations Analyst","salary":640000,"status":"Active","location":"Pune"},
+  {"id":1008,"name":"Sara Thomas","email":"sara@example.com","department":"Sales","role":"Account Executive","salary":700000,"status":"Inactive","location":"Mumbai"}
+]
