@@ -1,0 +1,33 @@
+DAY 4 MODEL EVALUATION
+Positive class: High hygiene risk (1)
+Training records: 160
+Testing records: 40
+
+              model  accuracy  precision   recall  f1_score
+logistic_regression     0.950       1.00 0.928571  0.962963
+      random_forest     0.825       0.92 0.821429  0.867925
+
+
+LOGISTIC_REGRESSION
+Confusion matrix (rows actual Low/High, columns predicted Low/High): [[12, 0], [2, 26]]
+              precision    recall  f1-score   support
+
+         Low       0.86      1.00      0.92        12
+        High       1.00      0.93      0.96        28
+
+    accuracy                           0.95        40
+   macro avg       0.93      0.96      0.94        40
+weighted avg       0.96      0.95      0.95        40
+
+
+RANDOM_FOREST
+Confusion matrix (rows actual Low/High, columns predicted Low/High): [[10, 2], [5, 23]]
+              precision    recall  f1-score   support
+
+         Low       0.67      0.83      0.74        12
+        High       0.92      0.82      0.87        28
+
+    accuracy                           0.82        40
+   macro avg       0.79      0.83      0.80        40
+weighted avg       0.84      0.82      0.83        40
+

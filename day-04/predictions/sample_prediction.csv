@@ -1,0 +1,2 @@
+cleanliness_score,odor_score,waste_level,complaints,footfall,hours_since_cleaning,logistic_regression_risk,random_forest_risk,logistic_regression_high_risk_probability,random_forest_high_risk_probability
+45,7,2,12,700,10,High,High,0.9864623284158641,0.745
