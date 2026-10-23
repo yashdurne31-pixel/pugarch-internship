@@ -1,0 +1,46 @@
+# Virtual environment
+venv/
+env/
+.venv/
+.env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Model files (large binaries — keep in models/ but skip heavy ones)
+# models/*.joblib   # Uncomment to exclude model file from Git
+
+# Environment variables / secrets
+.env
+*.env
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Test / coverage
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Logs
+*.log
