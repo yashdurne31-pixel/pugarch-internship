@@ -1,0 +1,193 @@
+{
+  "ranked_features": [
+    {
+      "feature": "temperature_compliance_score",
+      "rf_importance": 0.1627,
+      "mutual_info": 0.4622,
+      "f_score": 2696.95,
+      "composite_score": 1.0,
+      "cumulative_rf_ratio": 0.1627
+    },
+    {
+      "feature": "sanitation_protocol_score",
+      "rf_importance": 0.139,
+      "mutual_info": 0.4391,
+      "f_score": 2598.61,
+      "composite_score": 0.9089,
+      "cumulative_rf_ratio": 0.3016
+    },
+    {
+      "feature": "water_potability_index",
+      "rf_importance": 0.1341,
+      "mutual_info": 0.4155,
+      "f_score": 2296.86,
+      "composite_score": 0.855,
+      "cumulative_rf_ratio": 0.4357
+    },
+    {
+      "feature": "pest_control_score",
+      "rf_importance": 0.1152,
+      "mutual_info": 0.3776,
+      "f_score": 1985.12,
+      "composite_score": 0.7506,
+      "cumulative_rf_ratio": 0.5509
+    },
+    {
+      "feature": "cross_contamination_control",
+      "rf_importance": 0.0942,
+      "mutual_info": 0.3675,
+      "f_score": 2007.52,
+      "composite_score": 0.6859,
+      "cumulative_rf_ratio": 0.6451
+    },
+    {
+      "feature": "historical_violation_count",
+      "rf_importance": 0.08,
+      "mutual_info": 0.3636,
+      "f_score": 1508.95,
+      "composite_score": 0.6064,
+      "cumulative_rf_ratio": 0.7251
+    },
+    {
+      "feature": "structural_maintenance_score",
+      "rf_importance": 0.0637,
+      "mutual_info": 0.3519,
+      "f_score": 1843.29,
+      "composite_score": 0.5768,
+      "cumulative_rf_ratio": 0.7887
+    },
+    {
+      "feature": "waste_management_score",
+      "rf_importance": 0.0549,
+      "mutual_info": 0.3421,
+      "f_score": 1795.04,
+      "composite_score": 0.5412,
+      "cumulative_rf_ratio": 0.8436
+    },
+    {
+      "feature": "ppe_handwashing_score",
+      "rf_importance": 0.0551,
+      "mutual_info": 0.3243,
+      "f_score": 1597.91,
+      "composite_score": 0.5137,
+      "cumulative_rf_ratio": 0.8987
+    },
+    {
+      "feature": "food_handler_cert_ratio",
+      "rf_importance": 0.034,
+      "mutual_info": 0.2399,
+      "f_score": 1099.1,
+      "composite_score": 0.3538,
+      "cumulative_rf_ratio": 0.9327
+    },
+    {
+      "feature": "ambient_kitchen_temp",
+      "rf_importance": 0.0244,
+      "mutual_info": 0.0128,
+      "f_score": 39.98,
+      "composite_score": 0.0767,
+      "cumulative_rf_ratio": 0.9571
+    },
+    {
+      "feature": "relative_humidity",
+      "rf_importance": 0.0199,
+      "mutual_info": 0.0121,
+      "f_score": 19.15,
+      "composite_score": 0.062,
+      "cumulative_rf_ratio": 0.977
+    },
+    {
+      "feature": "facility_type_Hospital Cafeteria",
+      "rf_importance": 0.0025,
+      "mutual_info": 0.0402,
+      "f_score": 104.09,
+      "composite_score": 0.0411,
+      "cumulative_rf_ratio": 0.9795
+    },
+    {
+      "feature": "facility_type_Fast Food",
+      "rf_importance": 0.0027,
+      "mutual_info": 0.0127,
+      "f_score": 58.01,
+      "composite_score": 0.0173,
+      "cumulative_rf_ratio": 0.9822
+    },
+    {
+      "feature": "inspection_type_Routine",
+      "rf_importance": 0.0028,
+      "mutual_info": 0.0028,
+      "f_score": 0.29,
+      "composite_score": 0.0057,
+      "cumulative_rf_ratio": 0.985
+    },
+    {
+      "feature": "facility_type_Restaurant",
+      "rf_importance": 0.0029,
+      "mutual_info": 0.0,
+      "f_score": 6.46,
+      "composite_score": 0.0044,
+      "cumulative_rf_ratio": 0.9879
+    },
+    {
+      "feature": "facility_type_Catering Service",
+      "rf_importance": 0.0026,
+      "mutual_info": 0.0,
+      "f_score": 4.64,
+      "composite_score": 0.0035,
+      "cumulative_rf_ratio": 0.9905
+    },
+    {
+      "feature": "inspection_type_License Renewal",
+      "rf_importance": 0.0019,
+      "mutual_info": 0.0016,
+      "f_score": 1.39,
+      "composite_score": 0.0026,
+      "cumulative_rf_ratio": 0.9924
+    },
+    {
+      "feature": "inspection_type_Complaint-driven",
+      "rf_importance": 0.0023,
+      "mutual_info": 0.0,
+      "f_score": 0.1,
+      "composite_score": 0.0023,
+      "cumulative_rf_ratio": 0.9947
+    },
+    {
+      "feature": "inspection_type_Follow-up",
+      "rf_importance": 0.0021,
+      "mutual_info": 0.0,
+      "f_score": 0.28,
+      "composite_score": 0.0018,
+      "cumulative_rf_ratio": 0.9968
+    },
+    {
+      "feature": "facility_type_Supermarket Deli",
+      "rf_importance": 0.0017,
+      "mutual_info": 0.0,
+      "f_score": 7.07,
+      "composite_score": 0.001,
+      "cumulative_rf_ratio": 0.9985
+    },
+    {
+      "feature": "facility_type_Bakery & Confectionery",
+      "rf_importance": 0.0015,
+      "mutual_info": 0.0,
+      "f_score": 7.05,
+      "composite_score": 0.0005,
+      "cumulative_rf_ratio": 1.0
+    }
+  ],
+  "top_10_features": [
+    "temperature_compliance_score",
+    "sanitation_protocol_score",
+    "water_potability_index",
+    "pest_control_score",
+    "cross_contamination_control",
+    "historical_violation_count",
+    "structural_maintenance_score",
+    "waste_management_score",
+    "ppe_handwashing_score",
+    "food_handler_cert_ratio"
+  ],
+  "n_features_total": 22
+}

@@ -1,0 +1,54 @@
+{
+  "project": "Smart Hygiene Risk Prediction System",
+  "version": "1.0.0",
+  "features": {
+    "numerical": [
+      "temperature_compliance_score",
+      "sanitation_protocol_score",
+      "water_potability_index",
+      "ppe_handwashing_score",
+      "pest_control_score",
+      "food_handler_cert_ratio",
+      "structural_maintenance_score",
+      "waste_management_score",
+      "cross_contamination_control",
+      "historical_violation_count",
+      "ambient_kitchen_temp",
+      "relative_humidity"
+    ],
+    "categorical": [
+      "facility_type",
+      "inspection_type"
+    ],
+    "all_encoded": [
+      "temperature_compliance_score",
+      "sanitation_protocol_score",
+      "water_potability_index",
+      "ppe_handwashing_score",
+      "pest_control_score",
+      "food_handler_cert_ratio",
+      "structural_maintenance_score",
+      "waste_management_score",
+      "cross_contamination_control",
+      "historical_violation_count",
+      "ambient_kitchen_temp",
+      "relative_humidity",
+      "facility_type_Bakery & Confectionery",
+      "facility_type_Catering Service",
+      "facility_type_Fast Food",
+      "facility_type_Hospital Cafeteria",
+      "facility_type_Restaurant",
+      "facility_type_Supermarket Deli",
+      "inspection_type_Complaint-driven",
+      "inspection_type_Follow-up",
+      "inspection_type_License Renewal",
+      "inspection_type_Routine"
+    ]
+  },
+  "target_class": "hygiene_risk_level",
+  "target_score": "hygiene_risk_score",
+  "best_model": "Logistic Regression",
+  "test_accuracy": 0.9086,
+  "test_f1": 0.9085,
+  "test_auc": 0.9777
+}

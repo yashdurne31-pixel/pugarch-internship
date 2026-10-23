@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AegisHygiene AI - Smart Hygiene Risk Prediction System</title>
+  <meta name="description" content="Production-grade AI/ML hygiene risk prediction system for restaurants, catering, supermarkets, and healthcare facilities. Features automated EDA, model benchmarking, real-time risk classification, and REST API.">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Glassmorphism Navigation Bar -->
+    <header class="header-nav">
+      <a href="#" class="brand-wrapper">
+        <div class="brand-icon">🛡️</div>
+        <div>
+          <div class="brand-title">AegisHygiene <span style="color:var(--accent-cyan);font-weight:400">AI</span></div>
+          <div class="brand-subtitle">Smart Hygiene Risk Prediction & Compliance Platform</div>
+        </div>
+      </a>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-tabs">
+        <button class="nav-tab-btn active" data-tab="tab-simulator">⚡ Risk Simulator</button>
+        <button class="nav-tab-btn" data-tab="tab-inspections">📋 Inspections Log</button>
+        <button class="nav-tab-btn" data-tab="tab-analytics">📊 AI & EDA Analytics</button>
+        <button class="nav-tab-btn" data-tab="tab-batch">📁 Batch CSV Inspector</button>
+        <button class="nav-tab-btn" data-tab="tab-api">🔌 API Docs</button>
+      </nav>
+
+      <!-- System Actions & Health Status -->
+      <div class="nav-actions">
+        <div class="status-badge" id="backend-status-badge">
+          <div class="status-dot" id="backend-status-dot"></div>
+          <span id="backend-status-text">Checking API...</span>
+        </div>
+        <button class="btn-icon" id="btn-toggle-theme" title="Toggle Dark/Light Theme">🌓</button>
+      </div>
+    </header>
+
+    <!-- =====================================================================
+         TAB 1: LIVE RISK SIMULATOR
+         ===================================================================== -->
+    <section class="tab-content active" id="tab-simulator">
+      <div class="hero-banner">
+        <div>
+          <h1 class="hero-title">Live Hygiene Risk Prediction Simulator</h1>
+          <p class="hero-desc">Adjust operational hygiene compliance indicators and environmental parameters to generate instant multi-class hazard classifications, continuous risk index scoring, and prioritized remediation actions.</p>
+        </div>
+        <div class="presets-group">
+          <span style="font-size:0.8rem;color:var(--text-secondary);font-weight:600">Quick Presets:</span>
+          <button class="preset-btn btn-pass" id="preset-safe">✅ Safe (Grade A)</button>
+          <button class="preset-btn btn-warn" id="preset-warn">⚠️ Warning (Grade B)</button>
+          <button class="preset-btn btn-danger" id="preset-danger">🚨 Critical (Grade C)</button>
+        </div>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Inspection Inputs Form Card -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">📝 Inspection Metrics Input</div>
+            <span class="card-badge">FDA / WHO Standard</span>
+          </div>
+
+          <form id="predictor-form">
+            <!-- Facility Classification -->
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="sim-facility_type">Facility Type</label>
+                <select id="sim-facility_type" class="input-select">
+                  <option value="Restaurant">Restaurant (Dine-in / Bistro)</option>
+                  <option value="Hospital Cafeteria">Hospital Cafeteria / Clinical Dining</option>
+                  <option value="Fast Food">Fast Food / Quick Service</option>
+                  <option value="Catering Service">Commercial Catering Service</option>
+                  <option value="Supermarket Deli">Supermarket Fresh Deli</option>
+                  <option value="Bakery & Confectionery">Bakery & Confectionery</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sim-inspection_type">Inspection Purpose</label>
+                <select id="sim-inspection_type" class="input-select">
+                  <option value="Routine">Routine Scheduled Audit</option>
+                  <option value="Follow-up">Mandatory Follow-up Audit</option>
+                  <option value="Complaint-driven">Citizen / Health Complaint</option>
+                  <option value="License Renewal">Annual License Renewal</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Core Operational Compliance Sliders -->
+            <div class="form-section-title">Operational Compliance Indices (0 - 100)</div>
+            
+            <div class="form-group">
+              <div class="form-label">
+                <span>Temperature Control Compliance (Cold & Hot Holding)</span>
+                <span class="form-value-badge" id="val-temp">94%</span>
+              </div>
+              <input type="range" id="sim-temperature_compliance_score" class="range-slider" min="0" max="100" value="94" data-value-id="val-temp" data-unit="%">
+            </div>
+
+            <div class="form-group">
+              <div class="form-label">
+                <span>Sanitation & Chemical Contact Protocol</span>
+                <span class="form-value-badge" id="val-sanit">92%</span>
+              </div>
+              <input type="range" id="sim-sanitation_protocol_score" class="range-slider" min="0" max="100" value="92" data-value-id="val-sanit" data-unit="%">
+            </div>
+
+            <div class="form-group">
+              <div class="form-label">
+                <span>Pest Exclusion & Monitoring Score</span>
+                <span class="form-value-badge" id="val-pest">95%</span>
+              </div>
+              <input type="range" id="sim-pest_control_score" class="range-slider" min="0" max="100" value="95" data-value-id="val-pest" data-unit="%">
+            </div>
+
+            <div class="form-group">
+              <div class="form-label">
+                <span>Cross-Contamination Barrier Controls</span>
+                <span class="form-value-badge" id="val-cross">94%</span>
+              </div>
+              <input type="range" id="sim-cross_contamination_control" class="range-slider" min="0" max="100" value="94" data-value-id="val-cross" data-unit="%">
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <div class="form-label">
+                  <span>Water Potability Index</span>
+                  <span class="form-value-badge" id="val-water">98%</span>
+                </div>
+                <input type="range" id="sim-water_potability_index" class="range-slider" min="0" max="100" value="98" data-value-id="val-water" data-unit="%">
+              </div>
+
+              <div class="form-group">
+                <div class="form-label">
+                  <span>Handwashing & PPE Score</span>
+                  <span class="form-value-badge" id="val-ppe">90%</span>
+                </div>
+                <input type="range" id="sim-ppe_handwashing_score" class="range-slider" min="0" max="100" value="90" data-value-id="val-ppe" data-unit="%">
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <div class="form-label">
+                  <span>Certified Food Handler Ratio</span>
+                  <span class="form-value-badge" id="val-cert">90%</span>
+                </div>
+                <input type="range" id="sim-food_handler_cert_ratio" class="range-slider" min="0" max="100" value="90" data-value-id="val-cert" data-unit="%">
+              </div>
+
+              <div class="form-group">
+                <div class="form-label">
+                  <span>Waste Containment Index</span>
+                  <span class="form-value-badge" id="val-waste">92%</span>
+                </div>
+                <input type="range" id="sim-waste_management_score" class="range-slider" min="0" max="100" value="92" data-value-id="val-waste" data-unit="%">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-label">
+                <span>Structural & Ventilation Maintenance</span>
+                <span class="form-value-badge" id="val-struct">88%</span>
+              </div>
+              <input type="range" id="sim-structural_maintenance_score" class="range-slider" min="0" max="100" value="88" data-value-id="val-struct" data-unit="%">
+            </div>
+
+            <!-- Environmental & History Factors -->
+            <div class="form-section-title">Environmental & Historical Risks</div>
+            
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label class="form-label" for="sim-historical_violation_count">Past Violations</label>
+                <input type="number" id="sim-historical_violation_count" class="input-number" min="0" max="25" value="0">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sim-ambient_kitchen_temp">Kitchen Temp (°C)</label>
+                <input type="number" id="sim-ambient_kitchen_temp" class="input-number" min="15" max="50" step="0.5" value="24.0">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sim-relative_humidity">Humidity (% RH)</label>
+                <input type="number" id="sim-relative_humidity" class="input-number" min="20" max="98" step="1" value="52">
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary" id="btn-run-sim">
+              ⚡ Run AI Risk Assessment
+            </button>
+          </form>
+        </div>
+
+        <!-- Prediction Result Output Card -->
+        <div class="card gauge-card">
+          <div>
+            <div class="card-header">
+              <div class="card-title">🎯 AI Risk Evaluation Output</div>
+              <span class="card-badge" style="background:rgba(16,185,129,0.15);color:var(--safe-green);border-color:rgba(16,185,129,0.3)">Real-Time Inference</span>
+            </div>
+
+            <!-- Semi-Circular SVG Risk Gauge -->
+            <div class="gauge-svg-wrapper">
+              <svg class="gauge-svg" viewBox="0 0 200 120">
+                <defs>
+                  <linearGradient id="gauge-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#10b981" />
+                    <stop offset="50%" stop-color="#f59e0b" />
+                    <stop offset="100%" stop-color="#ef4444" />
+                  </linearGradient>
+                </defs>
+                <!-- Arc Track -->
+                <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="16" stroke-linecap="round" />
+                <!-- Color Gradient Arc -->
+                <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#gauge-gradient)" stroke-width="14" stroke-linecap="round" opacity="0.85" />
+                <!-- Center Pivot -->
+                <circle cx="100" cy="100" r="7" fill="var(--text-primary)" />
+                <!-- Animated Needle -->
+                <line id="gauge-needle" x1="100" y1="100" x2="100" y2="30" stroke="var(--text-primary)" stroke-width="3" stroke-linecap="round" style="transform-origin: 100px 100px; transform: rotate(-76deg); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);" />
+              </svg>
+              <div class="gauge-center-text">
+                <span class="gauge-score-value" id="gauge-score-value">8.2</span>
+                <span class="gauge-score-label">Hygiene Risk Index (0 - 100)</span>
+              </div>
+            </div>
+
+            <!-- Risk Classification Banner -->
+            <div class="risk-level-banner low" id="risk-banner">
+              <div>
+                <span style="font-size:0.75rem;opacity:0.85;display:block">CLASSIFIED RISK TIER</span>
+                <span class="risk-title" id="risk-title">Low Risk</span>
+              </div>
+              <div class="grade-pill" id="grade-pill">Grade A</div>
+            </div>
+
+            <!-- Multiclass Probability Distribution -->
+            <div class="prob-section">
+              <div style="font-size:0.8rem;font-weight:700;color:var(--text-secondary);margin-bottom:8px">AI MODEL CONFIDENCE SPREAD:</div>
+              <div class="prob-row">
+                <div class="prob-labels">
+                  <span>Low Risk (Grade A)</span>
+                  <span id="prob-safe-val">97.8%</span>
+                </div>
+                <div class="prob-track">
+                  <div class="prob-fill safe" id="prob-safe" style="width: 97.8%"></div>
+                </div>
+              </div>
+
+              <div class="prob-row">
+                <div class="prob-labels">
+                  <span>Medium Risk (Grade B)</span>
+                  <span id="prob-warn-val">2.1%</span>
+                </div>
+                <div class="prob-track">
+                  <div class="prob-fill warn" id="prob-warn" style="width: 2.1%"></div>
+                </div>
+              </div>
+
+              <div class="prob-row">
+                <div class="prob-labels">
+                  <span>High Risk (Grade C)</span>
+                  <span id="prob-danger-val">0.1%</span>
+                </div>
+                <div class="prob-track">
+                  <div class="prob-fill danger" id="prob-danger" style="width: 0.1%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Contributing Risk Drivers -->
+            <div style="text-align:left;margin-top:14px">
+              <div style="font-size:0.8rem;font-weight:700;color:var(--text-secondary);margin-bottom:6px">PRIMARY RISK DRIVERS:</div>
+              <div id="risk-factors-list">
+                <span style="font-size:0.82rem;color:var(--safe-green)">No critical risk anomalies identified across inspection indicators.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Remediation Checklist -->
+          <div class="recs-box">
+            <div class="recs-heading">
+              <span>🛡️ Actionable Corrective Recommendations:</span>
+            </div>
+            <div id="recs-list">
+              <div class="rec-item routine">
+                <span>⚡</span>
+                <span>EXCELLENT: Maintain current rigorous preventive hygiene controls and proceed with standard scheduled monitoring.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TAB 2: INSPECTIONS LOG & CRUD
+         ===================================================================== -->
+    <section class="tab-content" id="tab-inspections">
+      <div class="hero-banner">
+        <div>
+          <h2 class="hero-title">Official Inspections Registry</h2>
+          <p class="hero-desc">Live historical logs of facility sanitary audits, automated model risk evaluations, and regulatory enforcement tracking.</p>
+        </div>
+        <button class="btn-primary" id="btn-open-new-inspection" style="width:auto;margin:0">
+          + Record New Inspection
+        </button>
+      </div>
+
+      <!-- Table Toolbar -->
+      <div class="table-toolbar">
+        <div class="search-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-inspections" class="search-input" placeholder="Search by facility, license, or inspector...">
+        </div>
+
+        <div class="presets-group">
+          <button class="preset-btn filter-btn active" data-filter="All">All Grades</button>
+          <button class="preset-btn filter-btn" data-filter="Low Risk">Low Risk (Grade A)</button>
+          <button class="preset-btn filter-btn" data-filter="Medium Risk">Medium Risk (Grade B)</button>
+          <button class="preset-btn filter-btn" data-filter="High Risk">High Risk (Grade C)</button>
+        </div>
+      </div>
+
+      <!-- Table Responsive -->
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Audit ID</th>
+              <th>Facility / Establishment</th>
+              <th>Predicted Risk Tier</th>
+              <th>Risk Score</th>
+              <th>Inspector & Date</th>
+              <th>Verified Grade</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="inspections-tbody">
+            <tr>
+              <td colspan="7" style="text-align:center;padding:24px;color:var(--text-muted)">Loading verified inspection logs...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TAB 3: AI & EDA ANALYTICS
+         ===================================================================== -->
+    <section class="tab-content" id="tab-analytics">
+      <div class="hero-banner">
+        <div>
+          <h2 class="hero-title">AI & Exploratory Data Analytics</h2>
+          <p class="hero-desc">Quantitative intelligence on feature rankings, algorithm benchmarks, and correlation heatmaps generated during model training.</p>
+        </div>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <div class="grid-4col" style="margin-bottom:28px">
+        <div class="kpi-card">
+          <div class="kpi-icon blue">🏢</div>
+          <div>
+            <div class="kpi-value" id="kpi-total-facilities">--</div>
+            <div class="kpi-label">Registered Facilities</div>
+          </div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-icon green">📋</div>
+          <div>
+            <div class="kpi-value" id="kpi-total-inspections">--</div>
+            <div class="kpi-label">Completed Audits</div>
+          </div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-icon amber">📉</div>
+          <div>
+            <div class="kpi-value" id="kpi-avg-score">--</div>
+            <div class="kpi-label">Average Risk Index</div>
+          </div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-icon red">🚨</div>
+          <div>
+            <div class="kpi-value" id="kpi-critical-count">--</div>
+            <div class="kpi-label">Critical Hazards</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two-column Analytics Breakdown -->
+      <div class="grid-2col">
+        <!-- Feature Importance Card -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">🧬 Feature Selection & Risk Drivers</div>
+            <span class="card-badge">RF + Mutual Info + ANOVA</span>
+          </div>
+          <div id="feature-importance-list">
+            <div style="color:var(--text-muted)">Loading feature ranking weights...</div>
+          </div>
+        </div>
+
+        <!-- Model Benchmark Comparison -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">🏆 Machine Learning Model Benchmark</div>
+            <span class="card-badge">5-Fold Stratified CV</span>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Model Algorithm</th>
+                  <th>Accuracy</th>
+                  <th>F1-Score</th>
+                  <th>ROC-AUC</th>
+                  <th>CV F1 (Mean ± Std)</th>
+                </tr>
+              </thead>
+              <tbody id="model-benchmark-tbody">
+                <tr>
+                  <td colspan="5" style="text-align:center;color:var(--text-muted)">Loading benchmark metrics...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual Charts Gallery -->
+      <div style="margin-top:36px">
+        <h3 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:6px">High-Resolution EDA & Training Visualizations</h3>
+        <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:18px">Click on any plot to expand in full resolution lightbox.</p>
+
+        <div class="chart-gallery">
+          <!-- Chart 1: Correlation Matrix -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <span class="chart-card-title">Hygiene Risk Correlation Matrix</span>
+              <span class="badge" style="font-size:0.7rem;color:var(--text-secondary)">Seaborn / Pearson</span>
+            </div>
+            <div class="chart-img-container" data-title="Operational & Environmental Factor Correlation Matrix">
+              <img src="assets/eda_correlation_matrix.png" alt="Hygiene Correlation Heatmap" class="chart-img">
+            </div>
+          </div>
+
+          <!-- Chart 2: Risk Distribution -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <span class="chart-card-title">Risk Distribution by Facility Type</span>
+              <span class="badge" style="font-size:0.7rem;color:var(--text-secondary)">Categorical Breakdown</span>
+            </div>
+            <div class="chart-img-container" data-title="Hygiene Risk Categorization Across Diverse Facility Types">
+              <img src="assets/eda_risk_distribution.png" alt="Risk Distribution Chart" class="chart-img">
+            </div>
+          </div>
+
+          <!-- Chart 3: Feature Importance -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <span class="chart-card-title">Top 10 Risk Drivers (Feature Importance)</span>
+              <span class="badge" style="font-size:0.7rem;color:var(--text-secondary)">Multi-Metric Ranking</span>
+            </div>
+            <div class="chart-img-container" data-title="Top 10 Ranked Risk Drivers (Multi-Metric Feature Selection)">
+              <img src="assets/eda_feature_importance.png" alt="Feature Importance Chart" class="chart-img">
+            </div>
+          </div>
+
+          <!-- Chart 4: Confusion Matrix -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <span class="chart-card-title">Confusion Matrix (Best Performing Model)</span>
+              <span class="badge" style="font-size:0.7rem;color:var(--text-secondary)">Test Set Verification</span>
+            </div>
+            <div class="chart-img-container" data-title="Confusion Matrix: Best Performing Model">
+              <img src="assets/eda_confusion_matrix.png" alt="Confusion Matrix Heatmap" class="chart-img">
+            </div>
+          </div>
+
+          <!-- Chart 5: Historical Violations Impact -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <span class="chart-card-title">Violations Impact on Risk Score</span>
+              <span class="badge" style="font-size:0.7rem;color:var(--text-secondary)">Boxplot Progression</span>
+            </div>
+            <div class="chart-img-container" data-title="Impact of Historical Violations on Hygiene Risk Score Progression">
+              <img src="assets/eda_violations_vs_risk.png" alt="Violations vs Risk Score" class="chart-img">
+            </div>
+          </div>
+
+          <!-- Chart 6: Model Benchmarks -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <span class="chart-card-title">Algorithm Benchmark Comparison</span>
+              <span class="badge" style="font-size:0.7rem;color:var(--text-secondary)">Accuracy, F1, ROC-AUC</span>
+            </div>
+            <div class="chart-img-container" data-title="Machine Learning Algorithm Benchmark Comparison">
+              <img src="assets/eda_model_benchmark_comparison.png" alt="Algorithm Benchmarks" class="chart-img">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TAB 4: BATCH CSV INSPECTOR
+         ===================================================================== -->
+    <section class="tab-content" id="tab-batch">
+      <div class="hero-banner">
+        <div>
+          <h2 class="hero-title">Batch High-Throughput CSV Evaluation</h2>
+          <p class="hero-desc">Score hundreds of commercial kitchen audits at once by uploading raw inspection CSV datasets. Receive instant automated classifications and downloadable annotated reports.</p>
+        </div>
+        <div style="display:flex;gap:10px">
+          <button class="preset-btn" id="btn-load-sample-csv">📁 Load Built-in Sample CSV</button>
+          <button class="preset-btn btn-pass" id="btn-export-batch" style="display:none">📥 Export Scored CSV</button>
+        </div>
+      </div>
+
+      <!-- Drag & Drop Zone -->
+      <div id="csv-drop-zone" style="border:2px dashed var(--border-subtle);border-radius:var(--radius-lg);padding:44px 20px;text-align:center;cursor:pointer;background:var(--bg-card);transition:var(--transition);margin-bottom:24px">
+        <input type="file" id="csv-file-input" accept=".csv" style="display:none">
+        <div style="font-size:38px;margin-bottom:10px">📤</div>
+        <h3 style="font-family:var(--font-heading);font-size:1.15rem;margin-bottom:4px">Drag & Drop Facilities Inspection CSV Here</h3>
+        <p style="color:var(--text-secondary);font-size:0.86rem">or click to browse local files (must include temperature, sanitation, pest, and water scores)</p>
+      </div>
+
+      <!-- Batch Summary Box -->
+      <div id="batch-summary-box" style="display:none;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:14px 20px;margin-bottom:18px"></div>
+
+      <!-- Batch Results Table -->
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Row</th>
+              <th>Facility Classification</th>
+              <th>Predicted Risk Tier</th>
+              <th>Risk Score</th>
+              <th>Hygiene Grade</th>
+              <th>Priority Remediation Action</th>
+            </tr>
+          </thead>
+          <tbody id="batch-results-tbody">
+            <tr>
+              <td colspan="6" style="text-align:center;padding:32px;color:var(--text-secondary)">No CSV uploaded yet. Drag a file or click "Load Built-in Sample CSV" above.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TAB 5: REST API & DEVELOPER DOCS
+         ===================================================================== -->
+    <section class="tab-content" id="tab-api">
+      <div class="hero-banner">
+        <div>
+          <h2 class="hero-title">REST API Endpoints & Developer Integration</h2>
+          <p class="hero-desc">Programmatic endpoints for external IoT sensors, regulatory databases, and automated inspection dispatchers.</p>
+        </div>
+        <div>
+          <a href="/docs" target="_blank" class="btn-primary" style="text-decoration:none;display:inline-flex;width:auto">
+            🚀 Open Swagger Interactive Docs
+          </a>
+        </div>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Endpoint 1: POST /api/predict -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <span class="badge" style="background:#10b981;color:#fff;padding:2px 8px;border-radius:4px;font-size:0.75rem">POST</span>
+              <code>/api/predict</code>
+            </div>
+            <span class="card-badge">Single Inference</span>
+          </div>
+          <p style="font-size:0.86rem;color:var(--text-secondary);margin-bottom:12px">Submits inspection parameters and receives classified risk level, continuous score, confidence, and action items.</p>
+          
+          <div style="background:#050811;padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);font-family:var(--font-mono);font-size:0.78rem;overflow-x:auto;color:#a5b4fc">
+curl -X POST "http://localhost:8000/api/predict" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "facility_type": "Restaurant",
+    "temperature_compliance_score": 92.0,
+    "sanitation_protocol_score": 90.0,
+    "water_potability_index": 95.0,
+    "ppe_handwashing_score": 88.0,
+    "pest_control_score": 91.0,
+    "cross_contamination_control": 92.0,
+    "historical_violation_count": 0
+  }'
+          </div>
+        </div>
+
+        <!-- Endpoint 2: GET /api/inspections -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <span class="badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:4px;font-size:0.75rem">GET</span>
+              <code>/api/inspections</code>
+            </div>
+            <span class="card-badge">Registry Query</span>
+          </div>
+          <p style="font-size:0.86rem;color:var(--text-secondary);margin-bottom:12px">Query historical inspections with risk level filters and keyword search.</p>
+
+          <div style="background:#050811;padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);font-family:var(--font-mono);font-size:0.78rem;overflow-x:auto;color:#a5b4fc">
+curl -X GET "http://localhost:8000/api/inspections?risk=High%20Risk&limit=25" \
+  -H "Accept: application/json"
+          </div>
+        </div>
+
+        <!-- Endpoint 3: POST /api/predict/upload-csv -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <span class="badge" style="background:#10b981;color:#fff;padding:2px 8px;border-radius:4px;font-size:0.75rem">POST</span>
+              <code>/api/predict/upload-csv</code>
+            </div>
+            <span class="card-badge">Multipart Batch</span>
+          </div>
+          <p style="font-size:0.86rem;color:var(--text-secondary);margin-bottom:12px">Uploads CSV file for batch inference and returns structured results per row.</p>
+
+          <div style="background:#050811;padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);font-family:var(--font-mono);font-size:0.78rem;overflow-x:auto;color:#a5b4fc">
+curl -X POST "http://localhost:8000/api/predict/upload-csv" \
+  -F "file=@inspections_october.csv"
+          </div>
+        </div>
+
+        <!-- Endpoint 4: GET /api/analytics/stats -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <span class="badge" style="background:#3b82f6;color:#fff;padding:2px 8px;border-radius:4px;font-size:0.75rem">GET</span>
+              <code>/api/analytics/stats</code>
+            </div>
+            <span class="card-badge">KPI Dashboard</span>
+          </div>
+          <p style="font-size:0.86rem;color:var(--text-secondary);margin-bottom:12px">Aggregated KPIs for real-time compliance monitoring systems.</p>
+
+          <div style="background:#050811;padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);font-family:var(--font-mono);font-size:0.78rem;overflow-x:auto;color:#a5b4fc">
+curl -X GET "http://localhost:8000/api/analytics/stats" \
+  -H "Accept: application/json"
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- =====================================================================
+       MODAL: RECORD NEW INSPECTION
+       ===================================================================== -->
+  <div class="modal-backdrop" id="modal-new-inspection">
+    <div class="modal-dialog">
+      <button class="modal-close-btn modal-close-trigger">&times;</button>
+      <h3 style="font-family:var(--font-heading);font-size:1.35rem;font-weight:800;margin-bottom:6px">Record Official Inspection</h3>
+      <p style="color:var(--text-secondary);font-size:0.88rem;margin-bottom:20px">Submit an authorized inspection record into the system. The AI model will calculate risk and assign verified grades automatically.</p>
+
+      <form id="form-new-inspection">
+        <div class="form-group">
+          <label class="form-label" for="new-facility-id">Establishment / Facility</label>
+          <select id="new-facility-id" class="input-select" required>
+            <option value="">Loading facilities...</option>
+          </select>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="new-inspector-name">Auditor / Inspector Name</label>
+            <input type="text" id="new-inspector-name" class="input-text" placeholder="e.g. Officer John Doe" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-inspection-date">Inspection Date</label>
+            <input type="date" id="new-inspection-date" class="input-text" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="new-inspection-type">Inspection Protocol</label>
+          <select id="new-inspection-type" class="input-select">
+            <option value="Routine">Routine Annual Audit</option>
+            <option value="Follow-up">Mandatory Follow-up</option>
+            <option value="Complaint-driven">Customer Complaint Investigation</option>
+            <option value="License Renewal">Commercial License Renewal</option>
+          </select>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="new-temp">Temperature Compliance (0-100)</label>
+            <input type="number" id="new-temp" class="input-number" min="0" max="100" value="90" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-sanit">Sanitation Protocol (0-100)</label>
+            <input type="number" id="new-sanit" class="input-number" min="0" max="100" value="88" required>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="new-pest">Pest Exclusion (0-100)</label>
+            <input type="number" id="new-pest" class="input-number" min="0" max="100" value="92" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-water">Water Potability (0-100)</label>
+            <input type="number" id="new-water" class="input-number" min="0" max="100" value="95" required>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="new-ppe">Handwashing/PPE (0-100)</label>
+            <input type="number" id="new-ppe" class="input-number" min="0" max="100" value="86" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-cross">Cross-Contam Barrier (0-100)</label>
+            <input type="number" id="new-cross" class="input-number" min="0" max="100" value="90" required>
+          </div>
+        </div>
+
+        <div class="form-grid-3">
+          <div class="form-group">
+            <label class="form-label" for="new-cert">Handler Cert (%)</label>
+            <input type="number" id="new-cert" class="input-number" min="0" max="100" value="85">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-struct">Structural (0-100)</label>
+            <input type="number" id="new-struct" class="input-number" min="0" max="100" value="85">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-waste">Waste Mgt (0-100)</label>
+            <input type="number" id="new-waste" class="input-number" min="0" max="100" value="85">
+          </div>
+        </div>
+
+        <div class="form-grid-3">
+          <div class="form-group">
+            <label class="form-label" for="new-violation">Prior Violations</label>
+            <input type="number" id="new-violation" class="input-number" min="0" max="25" value="0">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-amb-temp">Temp (°C)</label>
+            <input type="number" id="new-amb-temp" class="input-number" min="10" max="50" step="0.5" value="24.0">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-amb-hum">Humidity (%)</label>
+            <input type="number" id="new-amb-hum" class="input-number" min="10" max="100" value="50">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="new-notes">Field Auditor Notes</label>
+          <input type="text" id="new-notes" class="input-text" placeholder="Additional observations, repeat notice status, etc.">
+        </div>
+
+        <button type="submit" class="btn-primary" id="btn-submit-inspection">
+          💾 Save & Execute ML Classification
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL: INSPECTION REPORT DETAILS
+       ===================================================================== -->
+  <div class="modal-backdrop" id="modal-inspection-report">
+    <div class="modal-dialog">
+      <button class="modal-close-btn modal-close-trigger">&times;</button>
+      <h3 style="font-family:var(--font-heading);font-size:1.35rem;font-weight:800;margin-bottom:12px" id="modal-report-title">Inspection Report Details</h3>
+      <div id="modal-report-content"></div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL: CHART LIGHTBOX
+       ===================================================================== -->
+  <div class="modal-backdrop" id="modal-chart-lightbox">
+    <div class="modal-dialog" style="max-width:960px;background:rgba(10,14,24,0.95)">
+      <button class="modal-close-btn modal-close-trigger">&times;</button>
+      <h3 style="font-family:var(--font-heading);font-size:1.2rem;font-weight:700;margin-bottom:14px" id="lightbox-title">Chart Lightbox</h3>
+      <div style="text-align:center">
+        <img id="lightbox-img" src="" alt="Expanded Visual Analytics" style="max-width:100%;max-height:75vh;border-radius:var(--radius-md)">
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Application Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/predictor.js"></script>
+  <script src="js/inspections.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/batch.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

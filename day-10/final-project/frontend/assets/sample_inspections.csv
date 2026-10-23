@@ -1,0 +1,9 @@
+facility_type,inspection_type,temperature_compliance_score,sanitation_protocol_score,water_potability_index,ppe_handwashing_score,pest_control_score,food_handler_cert_ratio,structural_maintenance_score,waste_management_score,cross_contamination_control,historical_violation_count,ambient_kitchen_temp,relative_humidity
+Restaurant,Routine,96.5,94.0,98.0,92.5,95.0,90.0,88.0,92.0,95.0,0,24.0,50.0
+Hospital Cafeteria,Routine,98.0,97.5,100.0,98.0,99.0,100.0,95.0,98.0,99.0,0,22.0,46.0
+Fast Food,Complaint-driven,42.0,38.5,65.0,35.0,30.0,40.0,45.0,40.0,38.0,7,36.5,82.0
+Bakery & Confectionery,Routine,82.0,79.0,90.0,80.0,76.0,82.0,84.0,85.0,80.0,1,26.0,60.0
+Supermarket Deli,Routine,88.0,86.0,94.0,88.0,85.0,86.0,88.0,89.0,87.0,1,23.5,54.0
+Catering Service,License Renewal,72.0,68.0,82.0,69.0,65.0,70.0,72.0,70.0,68.0,3,31.0,74.0
+Restaurant,Follow-up,52.0,48.0,70.0,50.0,42.0,48.0,55.0,50.0,49.0,5,34.0,78.0
+Hospital Cafeteria,Routine,94.0,93.0,96.0,92.0,94.0,95.0,91.0,94.0,95.0,0,23.0,48.0
