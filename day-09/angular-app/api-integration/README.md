@@ -1,0 +1,1 @@
+Angular development proxy configuration is in `angular-app/proxy.conf.json`. It forwards `/api` to `http://127.0.0.1:8000`. Start Laravel separately before `npm start`. Check that Laravel defines the inspection list and create routes before using inspection features.
