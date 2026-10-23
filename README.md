@@ -1,106 +1,194 @@
 # Pugarch Internship
 
-## Overview
+A collection of practical assignments and projects completed during the Pugarch Internship Technical Training and Domain Assessment Program.
 
-This repository contains the work completed during the **Pugarch Internship Technical Training and Domain Assessment Program**.
+This repository contains programming exercises, data analysis, machine learning, frontend and backend development, database integration, and project documentation.
 
-The repository is organized day-wise and includes programming exercises, practical assignments, projects, documentation, and implementation work completed during the internship.
+## 📚 Internship Progress
 
-The internship covers programming fundamentals, data analysis, machine learning, frontend and backend development, databases, and modern web technologies.
+| Day    | Domain                               | Technologies                                                     | Status      |
+| ------ | ------------------------------------ | ---------------------------------------------------------------- | ----------- |
+| Day 1  | Programming Fundamentals             | JavaScript                                                       | Completed   |
+| Day 2  | Python Programming                   | Python                                                           | Completed   |
+| Day 3  | Data Analysis & Visualization        | Python, NumPy, pandas, Matplotlib                                | Completed   |
+| Day 4  | Machine Learning                     | Python, scikit-learn                                             | Completed   |
+| Day 5  | Modern JavaScript Development        | JavaScript, HTML, CSS, Fetch API, JSON, localStorage             | Completed   |
+| Day 6  | Frontend Development                 | TypeScript, React                                                | Completed   |
+| Day 7  | Full-Stack Development               | Next.js, Node.js, Express.js, REST APIs                          | Completed   |
+| Day 8  | Backend & Database Development       | PHP, Laravel, MySQL                                              | Completed   |
+| Day 9  | Frontend Framework Development       | Angular, TypeScript, REST APIs                                   | Implemented |
+| Day 10 | Smart Hygiene Risk Prediction System | Python, Machine Learning, FastAPI, SQLite, HTML, CSS, JavaScript | Implemented |
 
-## Internship Progress
+## 🚀 Featured Project: Day 10
 
-| Day    | Domain                                     | Technologies                                         | Status                                |
-| ------ | ------------------------------------------ | ---------------------------------------------------- | ------------------------------------- |
-| Day 1  | Programming Fundamentals & Problem Solving | JavaScript                                           | Completed                             |
-| Day 2  | Python Development                         | Python, CSV                                          | Completed                             |
-| Day 3  | Data Analysis & Visualization              | Python, NumPy, pandas, Matplotlib                    | Completed                             |
-| Day 4  | Machine Learning                           | Python, Logistic Regression, Random Forest           | Completed                             |
-| Day 5  | Modern JavaScript Development              | JavaScript, HTML, CSS, Fetch API, JSON, localStorage | Completed                             |
-| Day 6  | Frontend Development                       | TypeScript, React                                    | Completed                             |
-| Day 7  | Full-Stack Development                     | Next.js, Node.js, Express.js, REST APIs              | Completed                             |
-| Day 8  | Database & Backend Development             | SQL, MySQL, PHP, Laravel                             | Completed                             |
-| Day 9  | Frontend Framework Development             | Angular, TypeScript, REST APIs                       | Build successful; testing in progress |
-| Day 10 | To be updated                              | To be updated                                        | Pending                               |
+### AegisHygiene AI — Smart Hygiene Risk Prediction System
 
-## Technologies Used
+**Project directory:** `day-10/final-project/`
+
+A machine-learning application designed to estimate hygiene risk from facility inspection data and present results through a web dashboard and REST API.
+
+### Key Features
+
+* **Data Preprocessing:** Data cleaning, missing-value handling, encoding, and scaling.
+* **Exploratory Data Analysis:** Charts and statistical summaries to explore inspection data.
+* **Feature Selection:** Identifies relevant input features for model training.
+* **Machine Learning:** Classification and regression models for hygiene risk assessment.
+* **Model Evaluation:** Evaluation metrics and saved model artifacts.
+* **Risk Prediction:** Supports inspection-level risk prediction.
+* **Batch Prediction:** Processes multiple inspection records using CSV input.
+* **REST API:** FastAPI backend for predictions and application data.
+* **Database Integration:** SQLite database for storing facility and inspection information.
+* **Interactive Dashboard:** Browser-based interface for predictions, inspections, and analytics.
+* **Testing:** Automated backend and machine-learning tests are included.
+
+### Technology Stack
+
+| Component            | Technologies            |
+| -------------------- | ----------------------- |
+| Programming Language | Python                  |
+| Data Processing      | pandas, NumPy           |
+| Machine Learning     | scikit-learn            |
+| API Framework        | FastAPI                 |
+| Database             | SQLite                  |
+| Frontend             | HTML5, CSS3, JavaScript |
+| Visualization        | Matplotlib              |
+| Testing              | pytest                  |
+| Development Tools    | VS Code, Git, GitHub    |
+
+## ⚙️ Installation and Setup
+
+### Prerequisites
+
+* Python 3.10 or newer recommended
+* Git
+* Visual Studio Code (recommended)
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yashdurne31-pixel/pugarch-internship.git
+cd pugarch-internship
+```
+
+### 2. Create a Virtual Environment
+
+```bash
+python -m venv .venv
+```
+
+### 3. Activate the Environment
+
+For Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+### 4. Install Backend Dependencies
+
+```bash
+python -m pip install -r day-10/final-project/backend/requirements.txt
+```
+
+### 5. Start the Application
+
+```powershell
+cd day-10/final-project/backend
+python -m uvicorn main:app --host 127.0.0.1 --port 8000 --reload
+```
+
+### 6. Open the Application
+
+Once the server starts, open these addresses in your browser:
+
+| Resource                      | Address                     |
+| ----------------------------- | --------------------------- |
+| Web Dashboard                 | http://127.0.0.1:8000/      |
+| Interactive API Documentation | http://127.0.0.1:8000/docs  |
+| ReDoc API Documentation       | http://127.0.0.1:8000/redoc |
+
+**Note:** These addresses work on your own computer while the server is running. If the project uses a different frontend or startup configuration, follow the instructions in `day-10/final-project/README.md`.
+
+## 🧪 Run Tests
+
+From the repository root, with the appropriate dependencies installed:
+
+```bash
+python -m pytest day-10/final-project/backend/tests -v
+```
+
+Check the test output to confirm whether the tests pass in your environment.
+
+## 📊 Machine Learning Workflow
+
+The Day 10 project follows this workflow:
+
+1. Dataset generation or loading
+2. Data inspection and preprocessing
+3. Exploratory data analysis
+4. Feature selection
+5. Model training
+6. Model evaluation
+7. Model artifact saving
+8. Single-record prediction
+9. Batch prediction
+10. Visualization and API integration
+
+**Important:** The project includes synthetic training data. Metrics obtained from synthetic data do not prove real-world prediction accuracy. Independent validation with representative inspection data is required before using the model for operational decisions.
+
+## 💻 Technologies Across the Internship
 
 ### Programming Languages
 
-* JavaScript
 * Python
+* JavaScript
 * TypeScript
 * SQL
 * PHP
+* HTML
+* CSS
 
 ### Frontend Development
 
-* HTML5
-* CSS3
 * React
 * Next.js
 * Angular
+* HTML5
+* CSS3
+* JavaScript
 
 ### Backend Development
 
 * Node.js
 * Express.js
+* FastAPI
 * Laravel
-* REST API development
+* REST APIs
 
-### Data Analysis & Machine Learning
+### Data Analysis and Machine Learning
 
 * NumPy
 * pandas
 * Matplotlib
-* Logistic Regression
-* Random Forest
+* scikit-learn
+* Data preprocessing
+* Exploratory data analysis
+* Feature selection
+* Classification and regression
 
-### Databases & Data Storage
+### Databases and Tools
 
 * MySQL
-* CSV
-* JSON
-* Browser localStorage
-
-### Development Tools
-
-* Visual Studio Code
+* SQLite
 * Git
 * GitHub
-* npm
-* Composer
+* Visual Studio Code
+* pytest
 
-## Key Learning Areas
-
-* Programming fundamentals and problem-solving techniques
-* Python scripting and application development
-* Data manipulation, cleaning, and visualization
-* Machine learning model implementation and evaluation
-* Modern JavaScript and browser-based application development
-* TypeScript and component-based frontend development
-* REST API development and integration
-* SQL queries and relational database concepts
-* Laravel backend development
-* Angular application development
-* Version control and GitHub repository management
-
-## Project Highlights
-
-* Employee Management CLI application
-* Python programming exercises and management system
-* CSV data analysis and visualization
-* Machine learning classification models
-* Employee Dashboard using modern JavaScript
-* Employee Management Dashboard using React and TypeScript
-* Employee Portal using Next.js and Node.js/Express
-* Facility Management API using Laravel and MySQL
-* Facility Inspection Dashboard using Angular
-
-## Repository Structure
+## 📁 Repository Structure
 
 ```text
-pugarch internship/
+pugarch-internship/
 ├── README.md
 ├── day-01/
 ├── day-02/
@@ -110,19 +198,45 @@ pugarch internship/
 ├── day-06/
 ├── day-07/
 ├── day-08/
-└── day-09/
+├── day-09/
+└── day-10/
+    ├── README.md
+    ├── api.py
+    ├── data/
+    ├── models/
+    ├── notebooks/
+    ├── outputs/
+    ├── src/
+    └── final-project/
+        ├── README.md
+        ├── backend/
+        ├── database/
+        ├── frontend/
+        └── ml/
 ```
 
-Each day's directory contains the relevant exercises, project files, implementation work, and documentation.
+Each day directory contains the relevant source code, exercises, project files, or documentation for that assignment.
 
-## Current Progress
+## 🎯 Project Highlights
 
-* **Days 1–8:** Core exercises and project implementation completed.
-* **Day 9:** Angular application build completed successfully; end-to-end functionality still needs verification.
-* **Day 10:** Pending.
+* Employee Management CLI
+* Python programming exercises
+* Data analysis and visualization
+* Machine-learning classification
+* JavaScript Employee Dashboard
+* React and TypeScript Employee Management Dashboard
+* Next.js and Node.js Employee Portal
+* Laravel and MySQL Facility Management API
+* Angular Facility Inspection Dashboard
+* **AegisHygiene AI — Smart Hygiene Risk Prediction System**
 
-## Author
+## 👨‍💻 Author
 
 **Yash Durne**
+
 Electronics and Telecommunication Engineering
 Pugarch Internship Technical Training and Domain Assessment Program
+
+---
+
+⭐ If you find this repository useful, consider giving it a star!
